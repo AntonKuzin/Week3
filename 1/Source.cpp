@@ -1,4 +1,4 @@
-#define JUDGE
+#define JUDGE1
 #ifdef JUDGE
 #include <fstream>
 std::ifstream cin("sort.in");
@@ -43,14 +43,20 @@ int* Merge(int* arr1, int size1, int* arr2, int size2)
 	return tempArr;
 }
 
-int* MergeSort(int* arr, int size)
+int* MergeSort(int* arr, int size, int offset)
 {
 	if (size == 1)
 	{
+		cout << offset + 1 << " " << offset + 1 << " " << arr[0] << " " << arr[0] << std::endl;
 		return arr;
 	}
+
 	int pivot = size / 2;
-	return Merge(MergeSort(&arr[0], pivot), pivot, MergeSort(&arr[pivot], size - pivot), size - pivot);
+	int* temp = Merge(MergeSort(&arr[pivot], size - pivot, offset + pivot), size - pivot, MergeSort(&arr[0], pivot, offset), pivot);
+
+	cout << offset + 1 << " " << offset + size << " " << temp[0] << " " << temp[size - 1] << std::endl;
+
+	return temp;
 }
 
 int main() {
@@ -64,12 +70,13 @@ int main() {
 		cin >> arr[i];
 	}
 
-	arr = MergeSort(arr, N);
+	arr = MergeSort(arr, N, 0);
 
-	for (size_t i = 0; i < N; i++)
+	for (size_t i = 0; i < N - 1; i++)
 	{
 		cout << arr[i] << " ";
 	}
+	cout << arr[N - 1];
 
 	for (size_t i = 0; i < pointers.size(); i++)
 	{
