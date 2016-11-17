@@ -1,0 +1,9 @@
+﻿Recall that an inversion in an integer sequence A is a situation when i < j, but Ai > Aj.
+ 
+Given a sequence of integers. Your task is to count the number of inversions in it.
+ 
+Hint: to make it faster, you may adapt the mergesort algorithm to solve this problem.
+Input
+The ﬁrst line of the input ﬁle contains an integer n (1 ≤ n ≤ 100000) – the number of elements in the sequence. The sequence itself follows in the second line. All numbers in this sequence do not exceed 109 by the absolute value.
+Output
+Output the number of inversions in the ﬁrst and only line of the output ﬁle.
